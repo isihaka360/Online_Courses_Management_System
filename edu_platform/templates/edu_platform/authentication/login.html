@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_title %}Login{% endblock %}
+
+{% block content %}
+<style>
+  .login-frame {
+    border: 2px solid #007bff; /* Change border color to professional blue */
+    background-color: #2c3e50; /* Change background color to match header */
+  }
+</style>
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 90vh;">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="login-frame p-4 p-4 border rounded" style="max-height: 80vh; overflow-y: auto; width: 300px;">
+        <form action="{% url "login" %}" method="POST" autocomplete="off" id="loginForm">
+          {% csrf_token %}
+          {% if error_message %}
+          <div class="alert alert-danger" role="alert">
+            {{error_message}}
+          </div>
+          {% endif %}
+          <h3 class="text-center mb-4" style="color: #fff;">Login</h3> <!-- Change text color to white -->
+          <div class="mb-3">
+            <input type="text" class="form-control" id="text" name="username" placeholder="Username" required>
+          </div>
+          <div class="mb-3">
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Login</button>
+          <p class="text-center mt-3" style="color: #fff;">Don't have an account? <a href="{% url "registration" %}" class="btn btn-outline-primary">Sign up</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+

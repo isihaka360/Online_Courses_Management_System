@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_title %}Registration{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-md-6">
+      <div class="card content-wrapper" style="background-color: #2c3e50;">
+        <div class="card-body">
+          <form action="{% url "registration" %}" method="POST" autocomplete="off">
+            {% csrf_token %}
+            <h3 class="text-center mb-4" style="color: #fff;">Registration</h3>
+            {% if error_message %}
+            <div class="alert alert-danger" role="alert">
+              {{error_message}}
+            </div>
+            {% endif %}
+            <div class="mb-3">
+              <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+            </div>
+            <div class="mb-3">
+              <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Firstname" required>
+            </div>
+            <div class="mb-3">
+              <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Lastname" required>
+            </div>
+            <div class="mb-3">
+              <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            
+            <div class="mb-3">
+              <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required>
+            </div>
+            
+            <div class="mb-3">
+              <input type="password" class="form-control" id="confirmed_password" name="confirmed_password" placeholder="Confirm Password" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-block">Register</button>
+          </form>
+          
+          <hr style="border-color: #fff;">
+          
+          <p class="text-center" style="color: #fff;">Already have an account? <a href="{% url "login" %}" class="btn btn-outline-primary">Sign in</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+

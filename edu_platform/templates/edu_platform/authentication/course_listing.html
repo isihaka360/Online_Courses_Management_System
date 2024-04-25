@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block page_title %}Course List{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 class="mt-5 mb-4">Explore Our Courses</h1>
+  <div class="row">
+    {% for course in courses %}
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100">
+        <img src="{{ course.thumbnail }}" class="card-img-top" alt="{{ course.title }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ course.title }}</h5>
+          <p class="card-text">{{ course.description }}</p>
+          <p><strong>Instructor:</strong> {{ course.instructor }}</p>
+          <p><strong>Duration:</strong> {{ course.duration }}</p>
+          <p><strong>Category:</strong> {{ course.category }}</p>
+          <p><strong>Format:</strong> {{ course.format }}</p>
+          <p><strong>Price:</strong> {{ course.price }}</p>
+          <p><strong>Enrollment Status:</strong> {{ course.enrollment_status }}</p>
+          <a href="{% url 'course_detail' course.id %}" class="btn btn-primary btn-sm">View Details</a>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <p class="col-md-12">No courses available at the moment.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

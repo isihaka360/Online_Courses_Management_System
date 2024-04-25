@@ -1,0 +1,74 @@
+<!-- student_dashboard.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}
+    Student Dashboard
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card profile-section">
+                <div class="card-body text-center">
+                    <!-- Profile Picture -->
+                    <img src="{{ student.profile_picture.url }}" alt="Profile Picture" class="img-fluid rounded-circle mb-3">
+                    <!-- Student Name -->
+                    <h4 class="card-title">{{ student.name }}</h4>
+                    <!-- Current Courses -->
+                    <p class="card-text"><strong>Current Courses:</strong></p>
+                    <ul class="list-group">
+                        {% for course in courses %}
+                        <li class="list-group-item">{{ course.title }}</li>
+                        {% endfor %}
+                    </ul>
+                    <!-- Upcoming Exams -->
+                    <p class="card-text mt-3"><strong>Upcoming Exams:</strong></p>
+                    <ul class="list-group">
+                        {% for exam in upcoming_exams %}
+                        <li class="list-group-item">{{ exam.title }} - {{ exam.start_date }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card course-progress-section">
+                <div class="card-body">
+                    <!-- Course Progress -->
+                    <h4 class="card-title">Course Progress</h4>
+                    <!-- Add progress bars or other visualizations here -->
+                </div>
+            </div>
+            <div class="card upcoming-events-section">
+                <div class="card-body">
+                    <!-- Upcoming Events -->
+                    <h4 class="card-title">Upcoming Events</h4>
+                    <!-- Add list of upcoming events here -->
+                </div>
+            </div>
+            <div class="card recent-activity-section">
+                <div class="card-body">
+                    <!-- Recent Activity -->
+                    <h4 class="card-title">Recent Activity</h4>
+                    <ul class="list-group">
+                        {% for activity in recent_activity %}
+                        <li class="list-group-item">{{ activity.description }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="card notifications-section">
+                <div class="card-body">
+                    <!-- Notifications -->
+                    <h4 class="card-title">Notifications</h4>
+                    <ul class="list-group">
+                        {% for notification in notifications %}
+                        <li class="list-group-item">{{ notification.message }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

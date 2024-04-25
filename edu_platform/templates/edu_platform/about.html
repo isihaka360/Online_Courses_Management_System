@@ -1,0 +1,445 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_title %}Home{% endblock %}
+
+{% block content %}
+    <!-- Header Section -->
+    <header class="header" style="background-color: #2c3e50; color: #fff; padding: 20px 0;">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <a class="navbar-brand" href="{% url "about" %}">
+                    <img src="{% static 'edu_platform/media/Online Education logo design.jpeg' %}" alt="Edu_Platform_Logo" height="40">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+    
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url "about" %}">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url "course_list" %}">Courses</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about-us">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact-us">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-outline-light mr-2" href="{% url "login" %}" style="background-color: transparent;">Sign In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-light" href="{% url "registration" %}" style="background-color: #fff; color: #2c3e50;">Sign Up</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    
+
+<!-- Hero Section -->
+<section class="hero" style="background-color: #F9F6F0; color: #000; padding: 100px 0;">
+    <style>
+        .hero-content {
+            padding-top: 50px; /* Adjust top padding for better alignment */
+        }
+        
+        .hero-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px; /* Add border radius for a professional touch */
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+        }
+        
+        .hero-image img {
+            max-width: none;
+            max-height: none;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: rotate(-15deg) scale(1.2); /* Rotate and scale the image */
+        }
+    </style>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 hero-content">
+                <h1>Welcome to LearningWave </h1>
+                <p class="lead">Your gateway to a world of knowledge and opportunity.</p>
+                <p>At LearningWave, our mission is to revolutionize the way people learn by providing high-quality online courses accessible anytime, anywhere. Whether you're looking to advance your career, explore new interests, or simply learn something new, we have a wide range of courses to suit your needs.</p>
+                <p>Our platform offers interactive learning experiences led by industry experts, allowing you to learn at your own pace and on your own schedule. From programming and business to arts and humanities, we cover a diverse array of topics to cater to learners of all backgrounds and interests.</p>
+                <p>Join our vibrant community of learners today and take the first step towards unlocking your full potential with LearningWave.</p>
+                <a href="{% url "course_list" %}" class="btn btn-primary">Browse Courses</a>
+            </div>
+            <div class="col-md-6 hero-image">
+                <img src="{% static 'edu_platform/media/choice.gif' %}" alt="Welcome Image" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+  <!-- About Section -->
+  <section class="about" style="background-image: url('{% static 'edu_platform/media/White cloth background abstract with soft waves_.jpeg' %}'); background-size: cover; padding: 80px 0; color: #333;" id = "about-us">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <div class="about-images text-center">
+                    <img src="{% static 'edu_platform/media/Lovely Animations of the Month — December 2017 (1).gif' %}" class="img-fluid rounded-circle border border-primary shadow" alt="About Us Image 1" style="max-width: 80%; height: auto;">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="about-content">
+                    <h2 class="mb-4">About Us</h2>
+                    <p class="lead">At LearningWave, we are dedicated to providing high-quality education to learners worldwide. Our platform offers a wide range of courses curated by experts in various fields.</p>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-check text-primary"></i> Over 50+ courses available</li>
+                        <li><i class="fas fa-check text-primary"></i> Expert instructors from top universities</li>
+                        <li><i class="fas fa-check text-primary"></i> Interactive learning experience</li>
+                        <li><i class="fas fa-check text-primary"></i> Flexible scheduling options</li>
+                    </ul>
+                    <a href="{% url "course_list" %}" class="btn btn-primary mt-3">Browse Courses</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+   <!-- Featured Courses Section -->
+   <section class="featured-courses" style="background-color: #F9F6F0; color: #000; padding: 80px 0;">
+    <style>
+        .section-heading {
+            text-align: center;
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        .section-heading h2 {
+            display: inline-block;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .section-heading h2::before {
+            content: "";
+            position: absolute;
+            width: 50px; /* Adjust the width of the line */
+            height: 3px; /* Adjust the thickness of the line */
+            background-color: #007bff; /* Adjust the color of the line */
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .course-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .course-card img {
+            transition: filter 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .course-card:hover img {
+            filter: brightness(110%);
+        }
+
+        .course-details {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .course-card:hover .course-details {
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+    </style>
+    <div class="container">
+        <div class="section-heading">
+            <h2>Featured Courses</h2>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="course-card mb-4 text-center">
+                    <img src="{% static 'edu_platform/media/wallpaperflare.com_wallpaper (8).jpg' %}" alt="Database Analysis" class="img-thumbnail course-image">
+                    <div class="course-details">
+                        <h3>Database Analysis & System Design</h3>
+                        <p>This course covers the principles and techniques of database analysis and system design. Learn how to design efficient and scalable databases for various applications.</p>
+                        <a href="{% url "course_list" %}" class="btn btn-primary">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more course cards here -->
+            <div class="col-md-4">
+                <div class="course-card mb-4 text-center">
+                    <img src="{% static 'edu_platform/media/LEARNING MANAGEMENT SYSTEM MARKET ANALYSIS.jpeg' %}" alt="Python Programming" class="img-thumbnail course-image">
+                    <div class="course-details">
+                        <h3>Programming with Python</h3>
+                        <p>Master the fundamentals of Python programming language. From basic syntax to advanced topics, this course will equip you with the skills to develop powerful and scalable applications.</p>
+                        <a href="{% url "course_list" %}" class="btn btn-primary">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more course cards here -->
+            <div class="col-md-4">
+                <div class="course-card mb-4 text-center">
+                    <img src="{% static 'edu_platform/media/The Best Platforms To Monetize Your Online Courses.jpeg' %}" alt="Computer Programming" class="img-thumbnail course-image">
+                    <div class="course-details">
+                        <h3>Fundamentals of Computer Programming</h3>
+                        <p>Explore the core concepts and principles of computer programming. This course is designed for beginners and covers topics such as variables, loops, functions, and more.</p>
+                        <a href="{% url "course_list" %}" class="btn btn-primary">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more course cards here -->
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="faq" style="background-color: #e3f2fd; color: #000; padding: 80px 0;">
+    <style>
+        /* CSS for the decorated line */
+        .heading-line {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .heading-line::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 50%;
+            height: 2px;
+            background-color: #007bff; /* Color of the line */
+            transform: translateX(-50%);
+        }
+    </style>
+    
+    <div class="container">
+        <!-- Heading with decorated line -->
+        <h2 class="text-center mb-5 heading-line">Frequently Asked Questions</h2>
+        
+        <div class="accordion" id="faqAccordion">
+            <!-- FAQ items -->
+            <div class="card">
+                <div class="card-header" id="headingOne" style="background-color: #bbdefb;">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <strong>How do I sign up for an account?</strong>
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#faqAccordion">
+                    <div class="card-body">
+                        To sign up for an account, simply click on the "<a href="{% url 'registration' %}" class="decorated-link">Sign Up</a>" button at the top right corner of the homepage. You will be prompted to provide your email address, create a password, and fill out some basic information. Once you submit the form, your account will be created, and you can start exploring our platform.
+                    </div>
+                </div>
+            </div>
+            <!-- Add more FAQ items as needed -->
+            <div class="card">
+                <div class="card-header" id="headingTwo" style="background-color: #bbdefb;">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                            <strong>What courses are available on the platform?</strong>
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#faqAccordion">
+                    <div class="card-body">
+                        Our platform offers a wide range of courses covering various subjects, including programming, business, arts, and more. You can browse the available courses by clicking on the "<a href="{% url 'course_list' %}" class="decorated-link">Courses</a>" tab in the navigation menu. We regularly update our course catalog to provide you with the latest and most relevant learning opportunities.
+                    </div>
+                </div>
+            </div>
+            <!-- Add more FAQ items as needed -->
+            <div class="card">
+                <div class="card-header" id="headingThree" style="background-color: #bbdefb;">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                            <strong>How can I enroll in a course?</strong>
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#faqAccordion">
+                    <div class="card-body">
+                        To enroll in a course, simply navigate to the course page and click on the "<a href="{% url 'enrollment' %}" class="decorated-link">Enroll Now</a>" button. If you haven't already signed in, you will be prompted to sign in or create an account. Once you're logged in, you can proceed with the enrollment process and start learning right away.
+                    </div>
+                </div>
+            </div>
+            <!-- Add more FAQ items as needed -->
+            <div class="card">
+                <div class="card-header" id="headingFour" style="background-color: #bbdefb;">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                            <strong>Can I access course materials offline?</strong>
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#faqAccordion">
+                    <div class="card-body">
+                        Currently, our platform does not support offline access to course materials. However, you can access the course content online from any device with an internet connection. We're constantly working on improving our platform, and offline access may be considered in future updates.
+                    </div>
+                </div>
+            </div>
+            <!-- Add more FAQ items as needed -->
+            <div class="card">
+                <div class="card-header" id="headingFive" style="background-color: #bbdefb;">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                            <strong>How can I contact support if I encounter issues?</strong>
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#faqAccordion">
+                    <div class="card-body">
+                        If you encounter any issues or have questions about our platform, you can contact our support team by emailing <a href="mailto:support@learningwave.com" class="decorated-link">support@learningwave.com</a> or by filling out the contact form on our website. Our support team will respond to your inquiry as soon as possible and assist you with any problems you may have.
+                    </div>
+                </div>
+            </div>
+            <!-- Add more FAQ items as needed -->
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- Call to Action Section -->
+<section class="cta" style="background-color: #FAF3E0; color: #333; padding: 60px 0;">
+    <style>
+        /* Adjusted button style */
+        .btn-custom {
+            background-color: #FF9F1C; /* Warm, inviting color */
+            border-color: #FF9F1C; /* Border color matches background */
+            color: #fff; /* Text color */
+            font-weight: bold; /* Increase font weight for emphasis */
+            transition: background-color 0.3s, border-color 0.3s; /* Smooth transition on hover */
+        }
+
+        .btn-custom:hover {
+            background-color: #FF7C00; /* Darker shade for hover effect */
+            border-color: #FF7C00; /* Darker shade for hover effect */
+        }
+    </style>
+
+    <div class="container text-center">
+        <h2 class="mb-4">Join Our Community Today!</h2>
+        <p class="lead">Unlock a world of knowledge and opportunities. Our community is dedicated to helping you achieve your learning goals.</p>
+        <div class="row">
+            <div class="col-md-4 mb-4 mb-md-0">
+                <h3>Stay Updated</h3>
+                <p>Receive the latest news, course updates, and educational resources straight to your inbox.</p>
+            </div>
+            <div class="col-md-4 mb-4 mb-md-0">
+                <h3>Connect with Experts</h3>
+                <p>Network with industry professionals, instructors, and fellow learners to expand your knowledge and career prospects.</p>
+            </div>
+            <div class="col-md-4">
+                <h3>Exclusive Offers</h3>
+                <p>Gain access to special discounts, promotions, and early access to new courses.</p>
+            </div>
+        </div>
+        <hr style="border-color: #333;">
+        <a href="{% url "registration" %}" class="btn btn-custom btn-lg mt-4">Sign Up Now</a> <!-- Apply adjusted button style -->
+    </div>
+</section>
+
+
+
+    <!-- Footer Section -->
+    <footer class="footer" style="background-color: #1f1f1f; color: #fff; padding: 50px 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+                    <h3>About Learning Wave</h3>
+                    <p>Learning Wave is dedicated to providing high-quality online education, offering a diverse range of courses taught by industry experts. Our goal is to empower learners worldwide to achieve their learning objectives and advance their careers.</p>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+                    <h3>Quick Links</h3>
+                    <ul class="list-unstyled">
+                        <li><a href="#" style="color: #fff;">Home</a></li>
+                        <li><a href="{% url "course_list" %}" style="color: #fff;">Courses</a></li>
+                        <li><a href="#" style="color: #fff;">About</a></li>
+                        <li><a href="#" style="color: #fff;">Contact</a></li>
+                        <li><a href="#" style="color: #fff;">Enroll in Programming Courses</a></li>
+                        <li><a href="#" style="color: #fff;">Enroll in Business Courses</a></li>
+                        <li><a href="#" style="color: #fff;">Enroll in Arts Courses</a></li>
+                        <!-- Add more specific course enroll links as needed -->
+                    </ul>
+                </div>
+                <div class="col-md-12 col-lg-4 mb-4 mb-lg-0" id = "contact-us">
+                    <h3>Contact Us</h3>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-envelope"></i> Email: info@learningwave.com</li>
+                        <li><i class="fas fa-phone"></i> Phone: +255-6123-58408</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Address: Mikocheni Street, Dar es salaam, Tanzania</li>
+                    </ul>
+                </div>
+            </div>
+            <hr style="border-color: #333;">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>&copy; 2024 Learning Wave. All rights reserved.</p>
+                    <ul class="social-links">
+                        <li><a href="#" style="color: #fff;"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#" style="color: #fff;"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#" style="color: #fff;"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#" style="color: #fff;"><i class="fab fa-linkedin-in"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- JavaScript code for FAQ functionality -->
+    <script>
+        $(document).ready(function(){
+            $('.collapse').on('shown.bs.collapse', function(){
+                $(this).parent().find(".btn-link").removeClass('collapsed');
+            }).on('hidden.bs.collapse', function(){
+                $(this).parent().find(".btn-link").addClass('collapsed');
+            });
+        });
+    </script>
+{% endblock %}
