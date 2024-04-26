@@ -1,23 +1,15 @@
-from django.shortcuts import render , redirect
-from django.contrib.auth import authenticate , login
-from django.conf.urls import handler404
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password
 from django.core.exceptions import ValidationError
 from .models import User
 
-#edu_platform all request handlers
-
-def _404_view(request, exception):
-    return render(request, '404.html', status=404)
-
-def _500_view(request):
-    return render(request, '500.html', status=500)
-
+# Course enrollment view
 def _course_enrollment(request):
-    
     return render(request, 'edu_platform/authentication/enrollment.html')
-    
+
+# User registration view
 def _registrationView(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -40,39 +32,23 @@ def _registrationView(request):
     else:
         return render(request, 'edu_platform/authentication/registration.html')
 
-    
-    
-
+# User login view
 def _loginView(request):
-    """_loginView function for login users of edu_platform
-        The function uses login and authenticate methods to login user
-        render and redirect methods used to login user """
-        
     if request.method == 'POST':
-            
         username = request.POST.get('username')
         password = request.POST.get('password')
-            
-        # Authenticate user
-        user = authenticate(request , username = username, password = password)
-             
+        user = authenticate(request, username=username, password=password)
         if user is not None:
-            # User authentication successful
             login(request, user)
-            return redirect ('student dash')
-            # return render (request , 'edu_platform/authenticate/student_dash.html')
+            return redirect('student_dash')
         else:
-            # Invalid email or password
             return render(request, 'edu_platform/authentication/login.html', {'error_message': 'Invalid username or password.'})
     else:
-        # GET request, render login page
-     return render(request, 'edu_platform/authentication/login.html')
+        return render(request, 'edu_platform/authentication/login.html')
 
-login_required(login_url='login')
+# Student dashboard view
+@login_required(login_url='login')
 def _student_dashboardView(request):
-    """The function will rendering for student dashboard and controlling all necessary info
-        corresponding to student dashboard student's details"""
-            # Get authenticated user's name
     user_name = request.user.username 
     first_name = request.user.first_name
     last_name = request.user.last_name
@@ -80,37 +56,35 @@ def _student_dashboardView(request):
     # Other logic to fetch data for the dashboard
 
     context = {
-        
         'user_name': user_name,
-        'first_name':first_name,
-        'last_name':last_name,
+        'first_name': first_name,
+        'last_name': last_name,
         # Other context variables for the dashboard
-        
     }
-    return render(request, 'edu_platform/authentication/student_dash.html' , context)
-    
-    
-def _course_detailsView(request):
-    """ _ displays detailed information about a specific course.
-Shows course description, instructor details, lesson module"""
-    pass
+    return render(request, 'edu_platform/authentication/student_dash.html', context)
+
+# Course list view
 def _course_listView(request):
-    """funct """
     return render(request, 'edu_platform/course_listing.html')
-def _lesson_detailsView(request):
-    """"""
+
+# Other views (course details, lesson details, exam details, grade exam details) are placeholders for now
+def _course_detailsView(request):
     pass
+
+def _lesson_detailsView(request):
+    pass
+
 def _exam_detailsView(request):
     pass
 
 def _grade_exam_detailsView(request):
     pass
 
+# About view
 def _aboutView(request):
-    """_aboutView function for rendering the contents about edu_platform"""
     return render(request, 'edu_platform/about.html')
 
+# Logout view
 @login_required
 def _logoutView(request):
-    """_logoutView function for logging out user from edu_platform's system dashboard login form""" 
-    return redirect ('login')
+    return redirect('login')
