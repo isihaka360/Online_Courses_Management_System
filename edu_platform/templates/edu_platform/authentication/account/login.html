@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_title %}
+  User | Login
+{% endblock %}
+
+{% block content %}
+<style>
+  /* Set background color */
+  body {
+    background-color: #DBE9FA; /* White Blue background color */
+  }
+
+  /* CSS for form */
+  .login-frame-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Make the container full height of viewport */
+  }
+
+  .login-frame {
+    background-color: #e5ecfb; /* Light Blue background color */
+    border: 1px solid #ddd; /* Light Grey border */
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px; /* Adjust form width as needed */
+    text-align: center; /* Center align text */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+  }
+
+  .login-frame h3 {
+    color: #333; /* Text color to dark grey */
+    margin-bottom: 20px;
+  }
+
+  .login-frame input[type="text"],
+  .login-frame input[type="password"],
+  .login-frame select {
+    margin-bottom: 15px;
+    width: 100%; /* Make input fields full width */
+    padding: 10px;
+    border: 1px solid #ddd; /* Light Grey border */
+    border-radius: 5px;
+    transition: border-color 0.3s ease-in-out; /* Add smooth transition effect */
+  }
+
+  .login-frame input[type="text"]:focus,
+  .login-frame input[type="password"]:focus,
+  .login-frame select:focus {
+    border-color: #DFD3E3; /* Purple White border color on focus */
+  }
+
+  /* Style for the login button */
+  .login-frame button[type="submit"] {
+    width: 100%;
+    background-color: #2506ad; /* Warm blue, inviting color */
+    border: 1px solid #2506ad; /* Border color matches background */
+    color: #fff; /* Text color */
+    font-weight: bold; /* Increase font weight for emphasis */
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s; /* Smooth transition on hover */
+    box-shadow: 0px 5px 10px rgba(48, 68, 247, 0.6); /* Box shadow */
+  }
+
+  .login-frame button[type="submit"]:hover {
+    background-color: #1d047a; /* Darker shade of warm blue on hover */
+    border-color: #1d047a; /* Darker shade of border color on hover */
+    box-shadow: 0px 8px 15px rgba(48, 68, 247, 0.8); /* Darker shadow on hover */
+  }
+
+  .login-frame .text-center {
+    color: #333; /* Text color to dark grey */
+  }
+
+  /* Style for the "Sign up" link */
+  .login-frame .sign-up-link {
+    display: inline-block; /* Ensure it behaves like a block element */
+    padding: 10px; /* Add padding for better visibility */
+    color: #2506ad; /* Warm blue, inviting color */
+    text-decoration: none;
+    transition: color 0.3s ease-in-out; /* Add smooth transition effect */
+  }
+
+  .login-frame .sign-up-link:hover {
+    color: #1d047a; /* Darker shade of warm blue on hover */
+  }
+</style>
+
+<div class="login-frame-container">
+  <!-- Login Form -->
+  <div class="login-frame">
+    <!-- Form Submission -->
+    <form action="{% url 'login' %}" method="POST" autocomplete="off" id="loginForm">
+      {% csrf_token %}
+      <!-- Title -->
+      <h3>Login</h3>
+      <!-- Username Input -->
+      <div class="mb-3">
+        <input type="text" class="form-control" id="text" name="username" placeholder="Username" required>
+      </div>
+      <!-- Password Input -->
+      <div class="mb-3">
+        <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+      </div>
+      <!-- Login Button -->
+      <button type="submit" class="btn btn-primary">Login</button>
+      <!-- Sign up Link -->
+      <p class="text-center mt-3">Don't have an account? <a href="{% url 'registration' %}" class="sign-up-link">Sign up</a></p>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

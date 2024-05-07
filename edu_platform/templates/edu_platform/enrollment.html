@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block page_title %}Enroll{% endblock %}
+{% block page_title %}
+
+LearningWave | Enroll
+
+{% endblock %}
 
 {% block content %}
     <div class="container">
@@ -15,7 +19,7 @@
                         <p><strong>Start Date:</strong> {{ course.start_date }}</p>
                         <p><strong>End Date:</strong> {{ course.end_date }}</p>
                         <p><strong>Instructor:</strong> {{ course.instructor }}</p>
-                        <a href="{% url 'enroll_course' course.id %}" class="btn btn-success">Enroll Now</a>
+                        <a href="{% url 'course_list'%}" class="btn btn-success">Enroll Now</a>
                     </div>
                 </div>
             </div>
